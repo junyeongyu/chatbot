@@ -1,0 +1,20 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: chatbot-service
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+  environment:
+    TWITTER_CONSUMER_KEY: ${env:TWITTER_CONSUMER_KEY}
+    TWITTER_SECRET: ${env:TWITTER_SECRET}
+    TWITTER_ACCESS_TOKEN_KEY: ${env:TWITTER_ACCESS_TOKEN_KEY}
+    TWITTER_ACCESS_TOKEN_SECRET: ${env:TWITTER_ACCESS_TOKEN_SECRET}
+
+functions:
+  statusesUpdate:
+    name: TwitterStatusesUpdate
+    handler: src/chatbot.statusesUpdate
